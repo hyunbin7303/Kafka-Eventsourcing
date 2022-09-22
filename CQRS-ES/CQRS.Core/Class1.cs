@@ -1,5 +1,6 @@
-﻿namespace CQRS.Core;
+namespace CQRS.Core;
 public class Class1
 {
 
 }
+ 
