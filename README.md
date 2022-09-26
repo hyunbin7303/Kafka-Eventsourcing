@@ -10,3 +10,10 @@ docker run --name sql-container --network mydockernetwork --restart always -e "A
 
 Docker related url
 https://www.nocentino.com/posts/2019-09-01-persisting-sql-server-data-in-docker-containers-part-1/
+
+
+
+## What is an Event?
+- Events are objects that describe something that has occured in the application. A typical source of events is the aggregate. When something important happens in the aggregate, it will raise an event.
+- Events are named with a past-partial verb.
+(e.g. PostCreatedEvent, PostLikedEvent
