@@ -13,12 +13,4 @@ namespace Post.Common.Events
         public string Username { get; set; }
         public DateTime EditDate { get; set; }
     }
-    public class CommentRemovedEvent : BaseEvent
-    {
-        public CommentRemovedEvent() : base(nameof(CommentRemovedEvent))
-        {
-
-        }
-        public Guid CommentId { get; set; }
-    }
 }
