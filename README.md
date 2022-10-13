@@ -31,3 +31,11 @@ https://www.nocentino.com/posts/2019-09-01-persisting-sql-server-data-in-docker-
 - the fundamental differences in its structure is due to the fundamental differences in how the data is stored in the write database or event store vs how it is stored in the read database. 
 
 * the design of the aggregate should therefore allow you to be able to use these events to recreate or replay the latest state of the aggregate, so that you don't have to query the read database for the latest state, else the hard separation of commands or queries would be in vain. 
+
+
+## Event Store
+- An event store must be an append only store. No update or delete operations should be allowed.
+- Each Event that is saved, should r epresent the version or state of an aggregate at any given point in time.
+- Events should be stored in chronological order and new events should be appended to the previous event.
+- The state of the aggregate should be recreatable by replaying the event store.
+- Implement optimistic concurrency control.
