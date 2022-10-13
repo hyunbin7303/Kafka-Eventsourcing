@@ -11,17 +11,19 @@ namespace Post.Cmd.Infrastructure.Repositories
         private readonly IMongoCollection<EventModel> _eventStoreCollection;
         public EventStoreRepository(IOptions<MongoDbConfig> config)
         {
-
+            var mongoClient = new MongoClient(config.Value.ConnectionString);
+            var mongoDatabase = mongoClient.GetDatabase(config.Value.Database);
+            _eventStoreCollection = mongoDatabase.GetCollection<EventModel>(config.Value.Collection);
         }
 
-        public Task<List<EventModel>> FindByAggregateId(Guid aggregateId)
+        public async Task<List<EventModel>> FindByAggregateId(Guid aggregateId)
         {
-            throw new NotImplementedException();
+            return await _eventStoreCollection.Find(x=> x.AggregateIdentifier == aggregateId).ToListAsync().ConfigureAwait(false);
         }
 
-        public Task SaveAsync(EventModel @event)
+        public async Task SaveAsync(EventModel @event)
         {
-            throw new NotImplementedException();
+            await _eventStoreCollection.InsertOneAsync(@event).ConfigureAwait(false);
         }
     }
 }
