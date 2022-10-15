@@ -30,3 +30,11 @@ namespace Post.Cmd.Infrastructure.Handlers
         }
     }
 }
+
+
+/*
+For the state of the aggregate to be replayed/recreated correctly, it is important that the ordering of events is enforced by implementing
+event versioning. So that the events are stored in the Event store in the correct order.
+Optimistic concurrency control is then used to ensure that only the expected event versions can be persisted to the event store.
+
+*/
