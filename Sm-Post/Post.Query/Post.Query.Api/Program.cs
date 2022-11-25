@@ -8,6 +8,11 @@ Action<DbContextOptionsBuilder> configDbContext = (o => o.UseLazyLoadingProxies(
 builder.Services.AddDbContext<DatabaseContext>(configDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configDbContext));
 
+// Create database and tables from code.
+var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
+dataContext.Database.EnsureCreated();
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
