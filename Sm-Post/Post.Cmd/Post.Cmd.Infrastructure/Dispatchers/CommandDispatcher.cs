@@ -21,7 +21,7 @@ namespace Post.Cmd.Infrastructure.Dispatchers
             {
                 await handler(command);
             }
-            else{
+            else {
                 throw new ArgumentNullException(nameof(handler), "No Command handler was registered!.");
             }
         }
