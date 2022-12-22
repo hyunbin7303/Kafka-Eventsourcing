@@ -42,7 +42,7 @@ namespace Post.Query.Infrastructure.Repositories
                 .FirstOrDefaultAsync(x => x.PostId == postId);
         }
 
-        public async Task<List<PostEntity>> LiksWithCommentsAsync()
+        public async Task<List<PostEntity>> ListWithCommentsAsync()
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
             return await context.Posts.AsNoTracking()

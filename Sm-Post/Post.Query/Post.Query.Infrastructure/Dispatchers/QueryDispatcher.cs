@@ -23,8 +23,9 @@ namespace Post.Query.Infrastructure.Dispatchers
         public async Task<List<PostEntity>> SendAsync(BaseQuery query)
         {
             if (_handlers.TryGetValue(query.GetType(), out Func<BaseQuery, Task<List<PostEntity>>> handler)){
-                return await handler(Query);
+                return await handler(query);
             }
+            throw new ArgumentNullException(nameof(handler), "no query handler was registered.");
         }
     }
 }
