@@ -15,7 +15,6 @@ namespace Post.Cmd.Api.Commands
             var aggregate = new PostAggregate(cmd.Id, cmd.Author, cmd.Message);
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
-
         public async Task HandlerAsync(EditMessageCommand cmd)
         {
             var aggregate = await _eventSourcingHandler.GetByIdAsync(cmd.Id);
@@ -23,7 +22,6 @@ namespace Post.Cmd.Api.Commands
 
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
-
         public async Task HandlerAsync(LikePostCommand cmd)
         {
             var aggregate = await _eventSourcingHandler.GetByIdAsync(cmd.Id);
@@ -50,14 +48,11 @@ namespace Post.Cmd.Api.Commands
 
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
-
         public async Task HandlerAsync(DeletePostCommand cmd)
         {
             var aggregate = await _eventSourcingHandler.GetByIdAsync(cmd.Id);
             aggregate.DeletePost(cmd.Username);
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
-
-
     }
 }
