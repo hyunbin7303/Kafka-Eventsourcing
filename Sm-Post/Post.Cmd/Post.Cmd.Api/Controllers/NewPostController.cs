@@ -26,6 +26,7 @@ namespace Post.Cmd.Api.Controllers
                 await _commandDispatcher.SendAsync(cmd);
                 return StatusCode(StatusCodes.Status201Created, new NewPostResponse
                 {
+                    Id = cmd.Id,
                     Message = "New post creation request completed."
                 });
             }

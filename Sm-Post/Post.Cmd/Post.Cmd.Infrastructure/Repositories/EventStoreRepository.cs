@@ -10,15 +10,16 @@ namespace Post.Cmd.Infrastructure.Repositories
     {
         private readonly IMongoCollection<EventModel> _eventStoreCollection;
 
-        public EventStoreRepository()
-        {
-        }
-
         public EventStoreRepository(IOptions<MongoDbConfig> config)
         {
             var mongoClient = new MongoClient(config.Value.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase(config.Value.Database);
             _eventStoreCollection = mongoDatabase.GetCollection<EventModel>(config.Value.Collection);
+        }
+
+        public async Task<List<EventModel>> FindAllAsync()
+        {
+            return await _eventStoreCollection.Find(_ => true).ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<List<EventModel>> FindByAggregateId(Guid aggregateId)

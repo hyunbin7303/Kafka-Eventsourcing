@@ -45,6 +45,7 @@ dispather.RegisterHandler<AddCommentCommand>(cmdHandler.HandlerAsync);
 dispather.RegisterHandler<EditCommentCommand>(cmdHandler.HandlerAsync);
 dispather.RegisterHandler<RemoveCommentCommand>(cmdHandler.HandlerAsync);
 dispather.RegisterHandler<DeletePostCommand>(cmdHandler.HandlerAsync);
+dispather.RegisterHandler<RestoreReadDbCommand>(cmdHandler.HandlerAsync);
 builder.Services.AddSingleton<ICommandDispatcher>(_ => dispather);
 
 builder.Services.AddControllers();
