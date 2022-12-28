@@ -9,6 +9,6 @@ namespace Post.Cmd.Api.Commands
         Task HandlerAsync(EditCommentCommand cmd);
         Task HandlerAsync(RemoveCommentCommand cmd);
         Task HandlerAsync(DeletePostCommand cmd);
-        Task HandlerAsync(RestoreReadDbCommand cmd);
+
     }
 }

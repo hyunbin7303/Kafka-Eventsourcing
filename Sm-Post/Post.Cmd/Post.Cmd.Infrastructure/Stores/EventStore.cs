@@ -12,8 +12,7 @@ namespace Post.Cmd.Infrastructure.Stores
         private readonly IEventStoreRepository _eventStoreRepo;
         private readonly IEventProducer _eventProducer;
         public EventStore(IEventStoreRepository eventStoreRepo, IEventProducer eventProducer)
-        {
-            _eventStoreRepo = eventStoreRepo;
+        { 
             _eventProducer = eventProducer;
         }
 
