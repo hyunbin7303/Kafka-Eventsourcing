@@ -56,8 +56,7 @@ namespace Post.Cmd.Api.Commands
         }
 
         public async Task HandlerAsync(RestoreReadDbCommand cmd)
-        {
-            await _eventSourcingHandler.RepublishEventsAsync();
+        { 
         }
     }
 }

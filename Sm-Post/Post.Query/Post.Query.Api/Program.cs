@@ -26,7 +26,7 @@ var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configureDbContext));
 // Create database and tables from code.
-var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
+ var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
 dataContext.Database.EnsureCreated();
 
 
